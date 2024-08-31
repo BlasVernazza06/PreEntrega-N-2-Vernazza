@@ -80,7 +80,7 @@ function printearViaje(){
             if (Europa.includes(viajes[i].ubicacion)) {
                 const EuropaTaxes = (viajes[i].precio * 0.15) + viajes[i].precio;
                 const europaSection = document.getElementById("Europa");
-                const idViaje = Math.ceil(randomNumber);
+                const idViaje = `<p>ID: ${Math.ceil(randomNumber)}</p>`;
                 const europaText = `<p>Su viaje va a realizarse hacia <strong>${viajes[i].ubicacion} el dia y hora ${viajes[i].fecha}</strong></p>
                                     <p>El precio luego de los impuestos es <strong>${EuropaTaxes.toFixed(2)}</strong></p>`;
                 europaSection.innerHTML += idViaje;
