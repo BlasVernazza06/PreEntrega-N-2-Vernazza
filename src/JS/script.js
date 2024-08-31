@@ -45,8 +45,6 @@ let avion4 = new Aviones("avion4" , "Cessna", "LG", 2007, "3km", 90000);
 aviones.push(avion1, avion2, avion3, avion4)
 
 function VerificarEstadoAviones() {
-    alert("Primero se verificarán los aviones que tenemos en depósito");
-    
     for (let i = aviones.length - 1; i >= 0; i--) {
         if (aviones[i].esviejo()) {
             aviones.splice(i, 1);
@@ -76,7 +74,7 @@ viajes.push(viaje1, viaje2)
 function printearViaje(){
     for (let i = 0; i < viajes.length; i++) {
         const avionSeleccionado = true
-        const randomNumber = Math.random()
+        const randomNumber = Math.random() * 10000
         if(avionSeleccionado){
             console.log(avionSeleccionado)
             if (Europa.includes(viajes[i].ubicacion)) {

@@ -117,10 +117,29 @@
 #aviones{
     display: flex;
     flex-direction: column;
-    gap: 13px;
+    gap: 15px;
 }
 
-.Europa{
+#Europa{
     display:flex;
-    margin-bottom: 10px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#Africa{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#America{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#Asia{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
 }
