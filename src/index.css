@@ -105,41 +105,266 @@
 }
 /* Termina NavSection */
 
+/* Card1 */
+
+.purchasesSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 50px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
 .purchases{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    gap: 200px;
-    margin: 200px 100px;
+    max-width: 1100px;
+    gap: 50px;
 }
 
-#aviones{
+.cards{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1100px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 3px 3px 3px rgb(236, 235, 235);
+    border: none;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.image_container img{
+    width: 80px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+.text_container{
     display: flex;
     flex-direction: column;
-    gap: 15px;
-}
-
-#Europa{
-    display:flex;
-    flex-direction: column;
     gap: 10px;
 }
 
-#Africa{
-    display:flex;
-    flex-direction: column;
+.deleteProduct{
+    display: flex;
+    margin: 0px 30px 0px 30px;
+
+    button{
+        padding: 10px;
+        border: none;
+        border: .3px solid red;
+        border-radius: 5px;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.separator{
+    display: flex;
+    border-left: 2px solid black;
+    height: 100px;
+}
+
+.priceSec{
+    display: flex;
+    float: right;
+}
+
+.confirm-purchase{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid black;
+    width: 700px;
+    padding-top: 13px;
+
+}
+
+.confirm-purchase .buttons-aside{
+    display: flex;
+    justify-content: left;
     gap: 10px;
 }
 
-#America{
-    display:flex;
-    flex-direction: column;
-    gap: 10px;
+
+.confirm-purchase .buttons-aside button{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
 }
 
-#Asia{
-    display:flex;
+.confirm-purchase .buttons-aside .finish{
+    border: 1px solid #fd9b40;
+    color: #fd9b40;
+    background-color: white;
+    cursor: pointer;
+}
+
+.confirm-purchase .buttons-aside .finish:hover{
+    transition: .3s all;
+    background-color: #fd9b40;
+    color: white;
+}
+
+.confirm-purchase .buttons-aside .continue{
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+}
+
+.confirm-purchase .buttons-aside .continue:hover{
+    transition: .3s all;
+    background-color: black;
+    color: white;
+}
+
+.confirm-purchase .price-aside{
+    margin-left: 275px;
+}
+
+.card-purchase{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: blue;
+    border-radius: 20px 0px 0px 0px;
+    height: 100%;
+    padding: 20px;
+    top: 0px;
+    right: 0px;
+}
+
+.card-purchase header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-purchase header p{
+    color: white;
+    font-size: 20px;
+}
+
+
+.card-purchase header button{
+    background-color: white;
+    padding: 5px;
+    border-radius: 30px;
+    margin-left: 200px;
+    border: none;
+}
+
+.card-purchase header button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.credit-cards{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+
+    p{
+        color: white;
+        font-weight: 300;
+    }
+}
+
+.credit-cards .cards-types{
+    display: flex; 
+    flex-direction: row;
+    max-width: 300px;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.credit-cards .cards-types div{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 90px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid rgb(167, 162, 162);
+
+    img{
+        width: 60px;
+        height: 45px;
+    }
+}
+
+.credit-cards div:hover{
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.purchases-details{
+    margin-top: 30px;
+}
+
+.purchases-details input{
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+}
+
+.final-prices {
+    display: flex;
     flex-direction: column;
     gap: 10px;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid black;
+    color: white;
+    
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
+
+.final-prices div span {
+    margin-left: auto;
+    text-align: right;
+}
+
+.pay-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    animation: fadeIn 0.3s ease forwards;
+    border-radius: 5px;
+    border: none;
+    margin-top: 7px;
+    padding: 15px;
+}
+
+.pay-button:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+.pay-button span{
+    font-size: 17px;
+}
+
+.pay-button p{
+    margin-left: auto;
+    text-align: right;
+    font-weight: 700;
+    font-size: 14px;
+}
+

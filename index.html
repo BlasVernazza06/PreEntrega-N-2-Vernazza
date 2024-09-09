@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Carrito Compras</title>
 </head>
 <body>
@@ -13,35 +14,54 @@
                 <p>AeroViajes</p>
             </div>
             <ul class="nav-list animate__animated animate__fadeInDown">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="Productos.html">Shop</a></li>
             </ul>
 
             <img src="src/images/icons8-carrito-de-compras-32.svg" alt="ImagenCarrito" class="animate__animated animate__fadeInDown">
         </div>
     </header>
     <main>
-        <section class="purchases">
-            <article id="aviones"> 
-                <h1>Aviones Disponibles:</h1>
-            </article>
-            <article id="Europa">
-                <h1>Europa</h1>
-            </article>
-            <article id="Africa">
-                <h1>Africa</h1>
-            </article>
-            <article id="America">
-                <h1>America</h1>
-            </article>
-            <article id="Asia">
-                <h1>Asia</h1>
-            </article>
+        <section class="purchasesSection">
+            <header class="title">
+                <h1>Mis compras</h1>
+            </header>
+            <div class="purchases" id="purchasesSec">
+                
+            </div>
+            <div class="confirm-purchase">
+                <aside class="buttons-aside">
+                    <button onclick="togglePurchaseDetails()" class="finish">Finalizar Compra</button>
+                    <a href="Productos.html"><button class="continue">Seguir Comprando</button></a>
+                </aside>
+            </div>
+            <aside class="card-purchase" id="togglePurchase">
+                <header>
+                    <p>Detalles de compra</p>
+                    <button onclick="destogglePurchaseDetails()"><img src="src/images/icons8-flecha-32.png" alt=""></button>
+                </header>
+                <section class="credit-cards">
+                    <p>Tipo de Interes%</p>
+                    <section class="cards-types">
+                        <div class=""><p>5%</p></div>
+                        <div class=""><p>10%</p></div>
+                        <div class=""><p>15%</p></div>
+                        <div class=""><p>10%</p></div>
+                        <div class=""><p>15%</p></div>
+                    </section>
+                </section>
+                <footer class="final-prices">
+                    <div class="subtotal"><p>Subtotal: </p> <span id="subtotal-price">$</span></div>
+                    <div class="interest"><p>Intereses: </p> <span>$4000</span></div>
+                    <div class="total"><p>Total: </p> <span>$7000</span></div>
+                    <button onclick="destogglePurchaseDetails()" class="pay-button">
+                        <span>$7000</span>
+                        <p>Finalizar Compra</p>
+                    </button>
+                </footer>
+            </aside>
         </section>
     </main>
-    <script src="src/JS/script.js"></script>
+    <script src="src/JS/class.compra.js">
+    </script>
 </body>
 </html>

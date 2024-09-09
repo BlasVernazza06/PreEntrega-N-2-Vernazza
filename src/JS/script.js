@@ -50,12 +50,6 @@ function VerificarEstadoAviones() {
             aviones.splice(i, 1);
         }
     }
-    
-    const avionesSection = document.getElementById("aviones");
-    const avionesText = aviones.map(avion => 
-        `<p class="avion-items"><strong>Nombre:</strong> ${avion.nombre}</p>`
-    ).join("");;
-    avionesSection.innerHTML += avionesText;
 }
 
 let Europa = ["España", "Alemania", "Francia", "Italia", "Paises Bajos", "Suiza", "Inglaterra"]
@@ -65,13 +59,12 @@ let Africa = ["Egipto", "Sudan", "Nigeria", "Etiopia"]
 
 let viajes = []
 
-let viaje1 = new Viajes(new Date("December 17, 2024"))
-let viaje2 = new Viajes(new Date(2025, 1, 15, 13))
+/* let viaje1 = new Viajes(new Date("December 17, 2024"))
+let viaje2 = new Viajes(new Date(2025, 1, 15, 13)) */
 
 
-viajes.push(viaje1, viaje2)
 
-function printearViaje(){
+function guardarDatosLocalStorage(){
     for (let i = 0; i < viajes.length; i++) {
         const avionSeleccionado = true
         const randomNumber = Math.random() * 10000
@@ -79,12 +72,24 @@ function printearViaje(){
             console.log(avionSeleccionado)
             if (Europa.includes(viajes[i].ubicacion)) {
                 const EuropaTaxes = (viajes[i].precio * 0.15) + viajes[i].precio;
-                const europaSection = document.getElementById("Europa");
-                const idViaje = `<p>ID: ${Math.ceil(randomNumber)}</p>`;
-                const europaText = `<p>Su viaje va a realizarse hacia <strong>${viajes[i].ubicacion} el dia y hora ${viajes[i].fecha}</strong></p>
-                                    <p>El precio luego de los impuestos es <strong>${EuropaTaxes.toFixed(2)}</strong></p>`;
-                europaSection.innerHTML += idViaje;
-                europaSection.innerHTML += europaText;
+                const idViaje = Math.ceil(randomNumber);
+                const fecha = viajes[i].fecha
+                const europaText = `<article class="cards">
+                                        <p>ID: ${idViaje}</p>
+                                        <div class="image_container">
+                                            <img src="src/images/Maldivas-Foto1.jpg" alt="">
+                                        </div>
+                                        <div class="text_container">
+                                            <strong><p>Viaje hacia ${viajes[i].ubicacion}</p></strong>
+                                            <p>Fecha del viaje ${fecha.toLocaleString()}</p>
+                                        </div>
+                                        <div class="separator">
+                                        </div>
+                                        <div class="priceSec">
+                                            <p class="price">Precio: $${EuropaTaxes}</p>
+                                        </div>
+                                    </article>`;
+            
             };
             if (Africa.includes(viajes[i].ubicacion)) {
                     const AfricaDiscount = viajes[i].precio - (viajes[i].precio * 0.30);
@@ -120,5 +125,44 @@ function printearViaje(){
     };
 };
 
-VerificarEstadoAviones();
-printearViaje();
+function mostrarDatosLocalStorage(){
+    const purchasesSection = document.getElementById("purchasesSec");
+
+    for(let i = 0; i < localStorage.length; i++){
+        const valor = localStorage.getItem(clave);
+
+        purchasesSection.innerHTML += valor;
+
+
+
+    }
+}
+
+function calcularPrecio() {
+    let total = 0;
+    const precios = document.querySelectorAll('.price p');
+
+    precios.forEach(precio => {
+        const texto = precio.textContent || precio.innerText;
+        const valor = parseFloat(texto.replace(/[^0-9.-]+/g, ''));
+        total += valor;
+    });
+
+    document.getElementById('total-price').textContent = total.toFixed(2);
+}
+
+function togglePurchaseDetails() {
+    // Esta función debería ser llamada solo para mostrar el elemento
+    document.getElementById("togglePurchase").style.display = "flex";
+}
+
+function destogglePurchaseDetails() {
+    // Esta función debería ser llamada solo para ocultar el elemento
+    document.getElementById("togglePurchase").style.display = "none";
+}
+
+// Configura el evento para el botón "Finalizar Compra"
+document.querySelector(".finish").addEventListener("click", togglePurchaseDetails);
+
+// Configura el evento para el botón de cerrar dentro del panel
+document.querySelector("#togglePurchase button").addEventListener("click", destogglePurchaseDetails);
