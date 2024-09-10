@@ -45,7 +45,7 @@ function agregarProductos(idProducto){
     Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Your work has been saved",
+        title: "Guardado con Exito",
         showConfirmButton: false,
         timer: 700
     });

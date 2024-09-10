@@ -3,11 +3,9 @@ const purchasesSection = document.getElementById("purchasesSec");
 const precios = document.getElementById('subtotal-price');
 const productoCarrito = JSON.parse(localStorage.getItem('miCarrito')) || [];
 
-if (productoCarrito.length > 0) {
-    renderizarProductos();
-} else {
-    console.log("El carrito está vacío o no se encontraron productos en localStorage.");
-}
+productoCarrito.length > 0 ? renderizarProductos() : console.log("El carrito está vacío o no se encontraron productos en localStorage.")
+
+
 function renderizarProductos() {
     purchasesSection.innerHTML = ""; 
     productoCarrito.forEach((prod) => {
@@ -49,7 +47,7 @@ function eliminarProducto(id) {
     }
 }
 
-function total(){
+function subtotal(){
     let total = 0
     productoCarrito.forEach((prod) => {
         total += prod.precio
@@ -58,7 +56,7 @@ function total(){
     precios.textContent = `$${totalFormateado}`;
 };
 
-total();
+subtotal();
 
 const activarBotonFinalizarCompra = () => {
     botonFinalizarCompra.addEventListener("click", () => {
@@ -82,15 +80,45 @@ const mostrarMensaje = (msg) => {
 };
 
 function togglePurchaseDetails() {
-    // Esta función debería ser llamada solo para mostrar el elemento
     document.getElementById("togglePurchase").style.display = "flex";
 }
 
 function destogglePurchaseDetails() {
-    // Esta función debería ser llamada solo para ocultar el elemento
     document.getElementById("togglePurchase").style.display = "none";
 }
 
 document.querySelector(".finish").addEventListener("click", togglePurchaseDetails);
 
 document.querySelector("#togglePurchase button").addEventListener("click", destogglePurchaseDetails);
+
+function intereses(valor) {
+    // Obtener el elemento con el id "intereses"
+    const cardIntereses = document.getElementById("intereses");
+
+    // Limpiar el contenido actual
+    cardIntereses.innerHTML = "";
+
+    // Añadir el valor recibido al contenido
+    cardIntereses.innerHTML += valor;
+}
+
+const interElements = document.querySelectorAll(".inter");
+
+interElements.forEach(element => {
+    element.addEventListener("click", function() {
+        const valor = element.textContent;
+        intereses(valor);
+    });
+});
+
+function total(){
+    let total = 0
+    const finalPrice = document.getElementById("final-price")
+    const intereses = document.querySelectorAll("intereses")
+    console.log(intereses)
+    const subtotal = Number(document.querySelectorAll("subtotal-price").textContent)
+    total = (subtotal / 100) * intereses
+    finalPrice.innerHTML += total
+};
+
+total()
