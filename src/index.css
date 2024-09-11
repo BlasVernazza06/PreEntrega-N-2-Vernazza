@@ -55,17 +55,7 @@
     color: black;
 }
 
-@media (max-width: 768px) {
-    .nav-bar{
-        height: 250px;
-    }
 
-    .nav-bar ul li{
-        display: block;
-        text-align: left;
-        padding: 10px;
-    }
-}
 
 .nav-bar ul li a,
 .nav-bar ul li a:after,
@@ -235,11 +225,12 @@
 
 .card-purchase{
     display: none;
+    position: fixed;
     flex-direction: column;
-    position: absolute;
     background-color: blue;
-    border-radius: 20px 0px 0px 0px;
-    height: 100%;
+    z-index: 2;
+    border-radius: 10px 0px 0px 0px;
+    height: 300%;
     padding: 20px;
     top: 0px;
     right: 0px;

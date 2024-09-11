@@ -40,10 +40,7 @@ function eliminarProducto(id) {
         localStorage.setItem("miCarrito", JSON.stringify(productoCarrito)); 
         purchasesSection.innerHTML = ""; 
         renderizarProductos(); 
-        Swal.fire({
-            icon: "error",
-            title: "Eliminado"
-        });
+        
     }
 }
 
@@ -91,34 +88,39 @@ document.querySelector(".finish").addEventListener("click", togglePurchaseDetail
 
 document.querySelector("#togglePurchase button").addEventListener("click", destogglePurchaseDetails);
 
+function total(){
+    let total = 0;
+    const finalPrice = document.getElementById("final-price"); 
+    const subtotalElement = document.getElementById("subtotal-price");
+    const buttonPrice = document.getElementById("button-price") 
+    
+    const subtotal = parseFloat(subtotalElement.textContent.replace("$", "").replace(",", "")); 
+    
+    const interesesElement = document.getElementById("intereses");
+    const porcentajeInteres = parseFloat(interesesElement.textContent.replace("%", "")) || 0;
+    
+    const intereses = (subtotal * porcentajeInteres) / 100;
+    total = subtotal + intereses;
+    
+    const totalFormateado = total.toLocaleString('es-ES');
+    finalPrice.textContent = `$${totalFormateado}`;
+    buttonPrice.textContent = `$${totalFormateado}`;
+}
+
 function intereses(valor) {
-    // Obtener el elemento con el id "intereses"
     const cardIntereses = document.getElementById("intereses");
-
-    // Limpiar el contenido actual
-    cardIntereses.innerHTML = "";
-
-    // Añadir el valor recibido al contenido
-    cardIntereses.innerHTML += valor;
+    cardIntereses.textContent = `${valor}%`; 
+    total(); 
 }
 
 const interElements = document.querySelectorAll(".inter");
 
 interElements.forEach(element => {
     element.addEventListener("click", function() {
-        const valor = element.textContent;
-        intereses(valor);
+        const valor = element.textContent.replace("%", ""); 
+        intereses(valor); 
     });
 });
 
-function total(){
-    let total = 0
-    const finalPrice = document.getElementById("final-price")
-    const intereses = document.querySelectorAll("intereses")
-    console.log(intereses)
-    const subtotal = Number(document.querySelectorAll("subtotal-price").textContent)
-    total = (subtotal / 100) * intereses
-    finalPrice.innerHTML += total
-};
+total();
 
-total()
