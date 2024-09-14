@@ -3,8 +3,11 @@ let carrito = JSON.parse(localStorage.getItem("miCarrito")) || [];
 const gridContainer = document.querySelector(".grid-Products");
 
 function cargarProductos() {
-    gridContainer.innerHTML = ""; 
+    gridContainer.innerHTML = "";
+    //👇 console.log explicativo
+    console.log("👇 este console.log, realiza un muestra de desestructuracion y acceso condicional a un objeto ") 
     productosCompra.forEach((producto) => {
+        
         console.log(producto?.precio < 500.000  || "No existe un vuelo a ese precio")
         const desestructuracion = ( {precio, nombre}) => {
             if (precio > 500.000) {
@@ -49,5 +52,4 @@ function agregarProductos(idProducto) {
     const productoElegido = productosCompra.find((producto) => producto.id == idProducto);
     carrito.push(productoElegido);
     localStorage.setItem("miCarrito", JSON.stringify(carrito));
-    
 }
